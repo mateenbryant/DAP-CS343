@@ -1,0 +1,15 @@
+.content {
+  display: flex;
+  grid-area: content;
+  text-align: center;
+  border-top: 2px;
+  justify-content: center;
+  padding-left: 50%;
+  padding-right: 50%;
+}
+
+.main-nav {
+  grid-area: nav;
+  float:left;
+
+}
