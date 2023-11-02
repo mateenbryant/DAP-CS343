@@ -15,21 +15,16 @@ p {
   border-top: 2px;
 }
 
-.content-header {
-    text-align: center;
-    background-color:rgb(202, 244, 244);
-    padding: 2%;
-    border-radius: 25px;
-}
-
 .main-nav {
   grid-area: nav;
   margin-top: -6%;
+  margin-left: -13%;
 }
 
 .side {
   grid-area: sidebar;
   margin-top: -6%;
+  margin-left: -13%;
 }
 
 li {

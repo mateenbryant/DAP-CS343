@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/main-theme.css">
+  <link rel="stylesheet" href="css/weather-style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/icons8-mountain-64.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <title>Alpine Gear Hub</title>
+</head>
+
+<header>
+    <div id="header">
+        <h1>Alpine Gear Hub  |  Elevate Your Ride!</h1>
+        <br>
+        <a href="index.html">Home</a>
+        <a href="shopping-guide.html">Shopping Guide</a>
+        <a href="slope-weather.html">Slope Weather</a>
+        <a href="rider-profiles.html">Rider Profiles</a>
+        <a href="tech-breakdown.html">Tech Breakdown</a>
+    </div>
+    
+</header>
+
+<body>
+    <article class="content">
+    <br>
+    <div class="content-header">
+        <h1>Resort Weather Hub</h1>
+        <h3>At Alpine Gear Hub, we believe in keeping our community informed and prepared. Whether you're planning a spontaneous trip or scheduling a vacation, our Resort Weather Hub provides you with up-to-date weather conditions at the most sought-after ski resorts. Let's ensure you make the most out of your alpine experience!</h3>
+    </div>
+    <h4>i will be using a network request for the top 20 mountains in the North America or maybe common ski resorts around the world.</h4>
+    <h4>i will be using another network request to a weather api for the proper weather data of each card.</h4>
+    <form>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Search for Specific Resort</label>
+            <input type="search" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+    </form>
+    <div class="mountain-cards">
+        <div class="card" style="width: 18rem;">
+        <img id="cardImage" src="images/snowshoe-image.jpg" class="card-img-top" alt="Image from Picsum">
+        <div class="card-body">
+            <h5 id="cardTitle" class="card-title">Snowshoe</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img id="cardImage" src="images/mammoth-image.jpg" class="card-img-top" alt="Image from Picsum">
+        <div class="card-body">
+            <h5 id="cardTitle" class="card-title">Mammoth</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img id="cardImage" src="images/steamboat-image.webp" class="card-img-top" alt="Image from Picsum">
+        <div class="card-body">
+            <h5 id="cardTitle" class="card-title">Steamboat</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img id="cardImage" src="images/winterpark-image.jpeg" class="card-img-top" alt="Image from Picsum">
+        <div class="card-body">
+            <h5 id="cardTitle" class="card-title">Winter Park</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>
+    </div>
+    </article>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+
+
+
+<footer>
+    All photos sourced from <a href="https://www.beyondmedals.com/">Beyond Medals</a>
+    <br>
+    Website Created By <a href="https://github.com/mateenbryant/DAP-CS343">Mateen Faieq</a>
+</footer>
+
+</html>

@@ -16,6 +16,7 @@ header {
     padding-bottom: 2%;
     color: rgb(91, 90, 90);
     font-size: large;
+    font-family: sans-serif;
 }
 
 header a {
@@ -27,4 +28,19 @@ footer {
     text-align: left;
     padding: 2%;
     background-color:rgb(202, 244, 244);
+    font-family: sans-serif;
 }
+
+article {
+    font-family: serif;
+}
+
+.content-header {
+    text-align: center;
+    background-color:rgb(202, 244, 244);
+    padding: 2%;
+    border-radius: 25px;
+}
+
+
+
