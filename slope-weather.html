@@ -64,8 +64,7 @@
         Website Created By <a href="https://github.com/mateenbryant/DAP-CS343">Mateen Faieq</a>
     </footer>
      <script>
-        // Function to fetch ski resort data
-       async function fetchSkiResorts() {
+        async function fetchSkiResorts() {
             const url = 'https://ski-resorts-and-conditions.p.rapidapi.com/v1/resort';
             const options = {
                 method: 'GET',
@@ -77,7 +76,7 @@
 
             try {
                 const response = await fetch(url, options);
-                const data = await response.json(); // Assuming the API returns JSON data
+                const data = await response.json();
                 console.log('Ski Resorts Data:', data);
                 return data;
             } catch (error) {
@@ -86,17 +85,13 @@
             }
         }
 
-        // Function to fetch weather data
         async function fetchWeatherData(lat, lon, apiKey) {
             const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
             
             try {
                 const response = await fetch(apiUrl);
                 const data = await response.json();
-                
-                // Assuming the API returns JSON data
                 console.log('Weather Data:', data);
-
                 return data;
             } catch (error) {
                 console.error('Error fetching weather data:', error);
@@ -108,15 +103,13 @@
             return Math.round((kelvin * 9/5) - 459.67);
         }
 
-        // Function to render resort cards based on data
         async function renderResortCards(resorts) {
             const cardsContainer = document.querySelector('.mountain-cards');
-            cardsContainer.innerHTML = ''; // Clear existing cards
+            cardsContainer.innerHTML = '';
 
             const apiKey = '7faeaecc2a3709140b2a0117fa449a8f'; 
 
             for (const resort of resorts) {
-                // Create Bootstrap card
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.innerHTML = `
@@ -127,10 +120,8 @@
                     </div>
                 `;
 
-                // Fetch weather data for the resort
                 const weatherData = await fetchWeatherData(resort.location.latitude, resort.location.longitude, apiKey);
 
-                // Update card content with weather information
                 if (weatherData) {
                     const temperatureKelvin = weatherData.main.temp;
                     const temperature = kelvinToFahrenheit(temperatureKelvin);
@@ -145,14 +136,11 @@
                     card.querySelector('.card-body').appendChild(weatherInfo);
                 }
 
-                // Append card to container
                 cardsContainer.appendChild(card);
             }
         }
 
-        // Wait for DOM to be fully loaded
         document.addEventListener('DOMContentLoaded', async () => {
-            // Initial fetch and render
             const allResorts = await fetchSkiResorts();
             renderResortCards(allResorts.data);
         });
