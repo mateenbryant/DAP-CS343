@@ -9,6 +9,14 @@ p {
     text-align: center; 
 }
 
+#header {
+  padding-top: 2%;
+}
+
+ul.nav.nav-pills.nav-fill {
+  padding-top: 2%;
+}
+
 .content {
   grid-area: content;
   text-align: left;

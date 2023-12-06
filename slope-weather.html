@@ -10,70 +10,152 @@
   <title>Alpine Gear Hub</title>
 </head>
 
-
-
 <body>
     <header>
         <div id="header">
+            <br>
             <h1>Alpine Gear Hub  |  Elevate Your Ride!</h1>
-            <a href="index.html">Home</a>
-            <a href="slope-weather.html">Slope Weather</a>
-            <a href="gear-breakdown.html">Gear Breakdown</a>
-            <a href="shopping-guide.html">Shopping Guide</a>
-            <a href="rider-profiles.html">Rider Profiles</a>
+            <br>
+            <ul class="nav nav-pills nav-fill">
+                <li class="nav-item">
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="slope-weather.html">Slope Weather</a>
+                </li>
+                <li class="nav-item">
+                    <a href="gear-breakdown.html">Gear Breakdown</a>
+                </li>
+                <li class="nav-item">
+                    <a href="shopping-guide.html">Shopping Guide</a>
+                </li>
+                <li class="nav-item">
+                    <a href="rider-profiles.html">Rider Profiles</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html">Blog</a>
+                </li>
+            </ul>
         </div>
     </header>
 
     <article class="content">
-    <br>
-    <div class="content-header">
-        <h2>Resort Weather Hub</h2>
-        <h4>At Alpine Gear Hub, we believe in keeping our community informed and prepared. Whether you're planning a spontaneous trip or scheduling a vacation, our Resort Weather Hub provides you with up-to-date weather conditions at the most sought-after ski resorts. Let's ensure you make the most out of your alpine experience!</h4>
-    </div>
-    <h4>i will be using a network request for the top 20 mountains in the North America or maybe common ski resorts around the world.</h4>
-    <h4>i will be using another network request to a weather api for the proper weather data of each card.</h4>
-    <form>
-        <div class="mb-3">
-            <label for="resort-name-search" class="form-label">Search for Specific Resort</label>
-            <input type="search" class="form-control" id="resort-name-search">
+        <br>
+        <div class="content-header">
+            <h2>Resort Weather Hub</h2>
+            <h4>At Alpine Gear Hub, we believe in keeping our community informed and prepared. Whether you're planning a spontaneous trip or scheduling a vacation, our Resort Weather Hub provides you with up-to-date weather conditions at the most sought-after ski resorts. Let's ensure you make the most out of your alpine experience!</h4>
         </div>
-    </form>
-    <div class="mountain-cards">
-        <div class="card" style="width: 18rem;">
-        <img id="snowshoe-image" src="images/snowshoe-image.jpg" class="card-img-top" alt="Snowhshoe ski lift chair">
-        <div class="card-body">
-            <h5 id="snowshoe-card" class="card-title">Snowshoe</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <br>
+        <form>
+            <div class="resort form">
+                <label for="resort-name-search" class="form-label">Search for Specific Resort</label>
+                <input type="search" class="form-control" id="resort-name-search">
+            </div>
+        </form>
+        <br>
+        <div class="row mountain-cards">
+            <!-- Cards will be dynamically added here -->
         </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img id="mammoth-image" src="images/mammoth-image.jpg" class="card-img-top" alt="Mammoth ski lift chair">
-        <div class="card-body">
-            <h5 id="mammoth-card" class="card-title">Mammoth</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img id="steamboat-image" src="images/steamboat-image.webp" class="card-img-top" alt="Steamboat ski trails from afar">
-        <div class="card-body">
-            <h5 id="steamboat-card" class="card-title">Steamboat</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img id="winterpark-image" src="images/winterpark-image.jpeg" class="card-img-top" alt="Large Winter Park Ski trail">
-        <div class="card-body">
-            <h5 id="winterpark-card" class="card-title">Winter Park</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-    </div>
     </article>
+
     <footer>
         All photos sourced from <a href="https://www.beyondmedals.com/">Beyond Medals</a>
         <br>
         Website Created By <a href="https://github.com/mateenbryant/DAP-CS343">Mateen Faieq</a>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+     <script>
+        // Function to fetch ski resort data
+       async function fetchSkiResorts() {
+            const url = 'https://ski-resorts-and-conditions.p.rapidapi.com/v1/resort';
+            const options = {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': '382954f58dmsh059d8ed0bf6aa9fp1641d0jsnfd195789e2fd',
+                    'X-RapidAPI-Host': 'ski-resorts-and-conditions.p.rapidapi.com'
+                }
+            };
+
+            try {
+                const response = await fetch(url, options);
+                const data = await response.json(); // Assuming the API returns JSON data
+                console.log('Ski Resorts Data:', data);
+                return data;
+            } catch (error) {
+                console.error('Error fetching ski resorts:', error);
+                return [];
+            }
+        }
+
+        // Function to fetch weather data
+        async function fetchWeatherData(lat, lon, apiKey) {
+            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+            
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                
+                // Assuming the API returns JSON data
+                console.log('Weather Data:', data);
+
+                return data;
+            } catch (error) {
+                console.error('Error fetching weather data:', error);
+                return null;
+            }
+        }
+
+        function kelvinToFahrenheit(kelvin) {
+            return Math.round((kelvin * 9/5) - 459.67);
+        }
+
+        // Function to render resort cards based on data
+        async function renderResortCards(resorts) {
+            const cardsContainer = document.querySelector('.mountain-cards');
+            cardsContainer.innerHTML = ''; // Clear existing cards
+
+            const apiKey = '7faeaecc2a3709140b2a0117fa449a8f'; 
+
+            for (const resort of resorts) {
+                // Create Bootstrap card
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-body">
+                        <h5 class="card-title">${resort.name}</h5>
+                        <p class="card-text">Country: ${resort.country}</p>
+                        <p class="card-text">Region: ${resort.region}</p>
+                    </div>
+                `;
+
+                // Fetch weather data for the resort
+                const weatherData = await fetchWeatherData(resort.location.latitude, resort.location.longitude, apiKey);
+
+                // Update card content with weather information
+                if (weatherData) {
+                    const temperatureKelvin = weatherData.main.temp;
+                    const temperature = kelvinToFahrenheit(temperatureKelvin);
+                    const weatherDescription = weatherData.weather[0].description;
+
+                    const weatherInfo = document.createElement('div');
+                    weatherInfo.innerHTML = `
+                        <p class="card-text">Current Temperature: ${temperature} F°</p>
+                        <p class="card-text">Current Weather: ${weatherDescription}</p>
+                    `;
+
+                    card.querySelector('.card-body').appendChild(weatherInfo);
+                }
+
+                // Append card to container
+                cardsContainer.appendChild(card);
+            }
+        }
+
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Initial fetch and render
+            const allResorts = await fetchSkiResorts();
+            renderResortCards(allResorts.data);
+        });
+    </script>
 </body>
 </html>
